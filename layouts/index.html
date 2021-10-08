@@ -1,0 +1,43 @@
+{{ define "main" }}
+<center><h1>My Cheatsheet</h1></center>
+<center><h5>This is where I keep my penetration testing notes. It's a work in progress, updated as I learn new things.</h5></center>
+
+{{ end }}
+
+{{ define "sidebar-prefooter" }}
+  {{ if eq $.Site.Language.LanguageName "English" }}
+  <div class="row justify-content-center">
+    <div class="col-md-12 col-lg-10 col-xl-6">
+      <article>
+        <div class="text-center">{{ .Content }}</div>
+        <div class="card-list">
+            <div class="card">
+              <div class="card-body">
+                <center><h3 class="h3"><a class="stretched-link text-body" href="/docs/shells/">Shells</a></h3></center>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <center><h3 class="h3"><a class="stretched-link text-body" href="/docs/ports/">Ports Enumeration</a></h3></center>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <center><h3 class="h3"><a class="stretched-link text-body" href="/docs/privesc/">Privilege Escalation</a></h3></center>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <center><h3 class="h3"><a class="stretched-link text-body" href="/docs/web-pentest/">Web Application</a></h3></center>
+              </div>
+            </div>
+        </div>
+      </article>
+    </div>
+  </div>
+  {{ end }}
+{{ end }}
+
+{{ define "sidebar-footer" }}
+
+{{ end }}
