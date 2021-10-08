@@ -1,5 +1,6 @@
 ---
 title: "Buffer Overflow"
+Description: bufferoverflow
 draft: false
 images: []
 menu:
@@ -7,6 +8,7 @@ menu:
     parent: "Other"
 weight: 1
 toc: true
+content: bufferoverflow
 ---
 
 ### Step 1
