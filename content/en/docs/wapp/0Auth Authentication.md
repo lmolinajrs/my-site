@@ -2,6 +2,8 @@
 title: "0Auth Authentication"
 draft: false
 images: []
+description: "Pentesting 0Auth"
+lead: "Pentesting 0Auth"
 menu:
   docs:
     parent: "Wapp"

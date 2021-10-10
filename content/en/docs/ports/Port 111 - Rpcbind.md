@@ -2,6 +2,8 @@
 title: "PORT 111 - Rpcbind"
 draft: false
 images: []
+description: "Portmapper Cheatsheet"
+lead: "Portmapper Cheatsheet"
 menu:
   docs:
     parent: "Ports"

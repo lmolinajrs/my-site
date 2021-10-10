@@ -2,6 +2,8 @@
 title: "PORT 5985 - Winrm"
 draft: false
 images: []
+description: "WinRM Cheatsheet"
+lead: "WinRM Cheatsheet"
 menu:
   docs:
     parent: "Ports"

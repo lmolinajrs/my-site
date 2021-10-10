@@ -2,6 +2,8 @@
 title: "PORT 110 - Pop3"
 draft: false
 images: []
+description: "POP Cheatsheet"
+lead: "POP Cheatsheet"
 menu:
   docs:
     parent: "Ports"

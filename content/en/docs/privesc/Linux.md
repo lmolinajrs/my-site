@@ -2,6 +2,8 @@
 title: "Linux"
 draft: false
 images: []
+description: "Linux Privilege Escalation"
+lead: "Linux Privilege Escalation"
 menu:
   docs:
     parent: "Privesc"

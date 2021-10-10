@@ -2,6 +2,8 @@
 title: "PORT 69 - UDP - TFTP"
 draft: false
 images: []
+description: "UDP - TFTP Cheatsheet"
+lead: "UDP - TFTP Cheatsheet"
 menu:
   docs:
     parent: "Ports"

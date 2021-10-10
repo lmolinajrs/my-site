@@ -2,6 +2,8 @@
 title: "PORT 161 - UDP - SNMP"
 draft: false
 images: []
+description: "UDP - SNMP Cheatsheet"
+lead: "UDP - SNMP Cheatsheet"
 menu:
   docs:
     parent: "Ports"

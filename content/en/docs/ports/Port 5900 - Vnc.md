@@ -2,6 +2,8 @@
 title: "PORT 5900 - VNC"
 draft: false
 images: []
+description: "VNC Cheatsheet"
+lead: "VNC Cheatsheet"
 menu:
   docs:
     parent: "Ports"

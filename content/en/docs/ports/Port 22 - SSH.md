@@ -2,6 +2,8 @@
 title: "PORT 22 - SSH"
 draft: false
 images: []
+description: "SSH Cheatsheet"
+lead: "SSH Cheatsheet"
 menu:
   docs:
     parent: "Ports"

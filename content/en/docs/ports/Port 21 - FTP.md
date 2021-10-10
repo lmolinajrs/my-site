@@ -2,6 +2,8 @@
 title: "PORT 21 - FTP"
 draft: false
 images: []
+description: "FTP Cheatsheet"
+lead: "FTP Cheatsheet"
 menu:
   docs:
     parent: "Ports"

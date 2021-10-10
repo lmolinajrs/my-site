@@ -2,6 +2,8 @@
 title: "Password Reset Poisoning"
 draft: false
 images: []
+description: "Pentesting Password Reset"
+lead: "Pentesting Password Reset"
 menu:
   docs:
     parent: "Wapp"

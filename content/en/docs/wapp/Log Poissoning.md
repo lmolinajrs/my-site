@@ -2,6 +2,8 @@
 title: "Log Poisoning"
 draft: false
 images: []
+description: "LFI to RCE poisoning logs"
+lead: "LFI to RCE poisoning logs"
 menu:
   docs:
     parent: "Wapp"

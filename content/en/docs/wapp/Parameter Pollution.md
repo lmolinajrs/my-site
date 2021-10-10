@@ -2,6 +2,8 @@
 title: "Parameter Pollution"
 draft: false
 images: []
+description: "Parameter Pollution Examples"
+lead: "Parameter Pollution Examples"
 menu:
   docs:
     parent: "Wapp"

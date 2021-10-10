@@ -1,7 +1,9 @@
 ---
-title: "PORT 53 - Whois"
+title: "PORT 53 - DNS"
 draft: false
 images: []
+description: "DNS Cheatsheet"
+lead: "DNS Cheatsheet"
 menu:
   docs:
     parent: "Ports"

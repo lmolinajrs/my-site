@@ -2,6 +2,8 @@
 title: "PORT 23 - Telnet"
 draft: false
 images: []
+description: "Telnet Cheatsheet"
+lead: "Telnet Cheatsheet"
 menu:
   docs:
     parent: "Ports"

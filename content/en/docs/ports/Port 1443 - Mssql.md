@@ -2,6 +2,8 @@
 title: "PORT 1443 - MSSQL"
 draft: false
 images: []
+description: "MSSQL Cheatsheet"
+lead: "MSSQL Cheatsheet"
 menu:
   docs:
     parent: "Ports"

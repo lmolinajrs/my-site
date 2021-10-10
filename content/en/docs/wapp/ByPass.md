@@ -2,6 +2,8 @@
 title: "Bypass"
 draft: false
 images: []
+description: "Bypassing 2FA, 304, 403 and file upload filters"
+lead: "Bypassing 2FA, 304, 403 and file upload filters"
 menu:
   docs:
     parent: "Wapp"

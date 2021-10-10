@@ -24,7 +24,7 @@
 
 [[docs]]
   name = "Other"
-  weight = 100
+  weight = 200
   identifier = "Other"
   url = "/docs/other/"
 

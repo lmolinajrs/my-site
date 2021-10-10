@@ -2,6 +2,8 @@
 title: "PORT 139 - 445 - Smb"
 draft: false
 images: []
+description: "SMB Cheatsheet"
+lead: "SMB Cheatsheet"
 menu:
   docs:
     parent: "Ports"

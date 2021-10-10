@@ -2,6 +2,8 @@
 title: "Host Header Injection"
 draft: false
 images: []
+description: "Host Header Injection Attacks"
+lead: "Host Header Injection Attacks"
 menu:
   docs:
     parent: "Wapp"

@@ -2,6 +2,8 @@
 title: "Wrappers"
 draft: false
 images: []
+description: "Useful PHP Wrappers"
+lead: "Useful PHP Wrappers"
 menu:
   docs:
     parent: "Wapp"

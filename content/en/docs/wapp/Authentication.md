@@ -2,6 +2,8 @@
 title: "Authentication"
 draft: false
 images: []
+description: "Some Authentication Vulnerabilities"
+lead: "Some Authenticatio Vulnerabilities"
 menu:
   docs:
     parent: "Wapp"

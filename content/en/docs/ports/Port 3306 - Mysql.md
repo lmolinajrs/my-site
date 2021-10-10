@@ -2,6 +2,8 @@
 title: "PORT 3306 - MYSQL"
 draft: false
 images: []
+description: "MYSQL Cheatsheet"
+lead: "MYSQL Cheatsheet"
 menu:
   docs:
     parent: "Ports"

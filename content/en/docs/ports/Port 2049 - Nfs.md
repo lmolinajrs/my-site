@@ -2,6 +2,8 @@
 title: "PORT 2049 - NFS"
 draft: false
 images: []
+description: "NFS Cheatsheet"
+lead: "NFS Cheatsheet"
 menu:
   docs:
     parent: "Ports"

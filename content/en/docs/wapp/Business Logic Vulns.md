@@ -2,6 +2,8 @@
 title: "Business Logic Vulns"
 draft: false
 images: []
+description: "Business Logic Vulnerabilities"
+lead: "Business Logic Vulnerabilities"
 menu:
   docs:
     parent: "Wapp"

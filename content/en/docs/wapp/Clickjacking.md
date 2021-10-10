@@ -2,6 +2,8 @@
 title: "Clickjacking"
 draft: false
 images: []
+description: "Clickjacking POC"
+lead: "Clickjacking POC"
 menu:
   docs:
     parent: "Wapp"

@@ -2,6 +2,8 @@
 title: "Directory Traversal"
 draft: false
 images: []
+description: "Directory Traversal/LFI filter bypass"
+lead: "Directory Traversal/LFI filter bypass"
 menu:
   docs:
     parent: "Wapp"

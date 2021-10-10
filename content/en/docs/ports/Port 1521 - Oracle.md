@@ -2,6 +2,8 @@
 title: "PORT 1521 - Oracle"
 draft: false
 images: []
+description: "Oracle SQL Cheatsheet"
+lead: "Oracle SQL Cheatsheet"
 menu:
   docs:
     parent: "Ports"

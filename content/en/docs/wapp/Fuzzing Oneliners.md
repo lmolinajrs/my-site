@@ -2,6 +2,8 @@
 title: "Fuzzing Oneliners"
 draft: false
 images: []
+description: "Some oneliners for recon and fuzzing"
+lead: "Some oneliners for recon and fuzzing"
 menu:
   docs:
     parent: "Wapp"

@@ -2,6 +2,8 @@
 title: "XXE - XML External Entity"
 draft: false
 images: []
+description: "XXE Cheatsheet"
+lead: "XXE Cheatsheet"
 menu:
   docs:
     parent: "Wapp"

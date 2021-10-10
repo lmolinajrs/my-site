@@ -2,6 +2,8 @@
 title: "PORT 25 - SMTP"
 draft: false
 images: []
+description: "SMPT Cheatsheet"
+lead: "SMTP Cheatsheet"
 menu:
   docs:
     parent: "Ports"

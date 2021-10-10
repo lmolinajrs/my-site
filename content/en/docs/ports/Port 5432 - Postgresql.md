@@ -2,6 +2,8 @@
 title: "PORT 5432 - PostgreSQL"
 draft: false
 images: []
+description: "PostgreSQL Cheatsheet"
+lead: "PostgreSQL Cheatsheet"
 menu:
   docs:
     parent: "Ports"

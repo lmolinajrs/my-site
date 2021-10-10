@@ -2,6 +2,8 @@
 title: "PORT 513 - Rlogin"
 draft: false
 images: []
+description: "Rlogin Cheatsheet"
+lead: "Rlogin Cheatsheet"
 menu:
   docs:
     parent: "Ports"

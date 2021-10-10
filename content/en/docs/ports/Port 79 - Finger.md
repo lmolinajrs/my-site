@@ -2,6 +2,8 @@
 title: "PORT 79 - Finger"
 draft: false
 images: []
+description: "Finger Cheatsheet"
+lead: "Finger Cheatsheet"
 menu:
   docs:
     parent: "Ports"

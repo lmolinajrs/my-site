@@ -2,6 +2,8 @@
 title: "PORT 389 - 636 - Ldap"
 draft: false
 images: []
+description: "LDAP Cheatsheet"
+lead: "LDAP Cheatsheet"
 menu:
   docs:
     parent: "Ports"

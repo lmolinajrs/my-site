@@ -2,6 +2,8 @@
 title: "PORT 145 - Msrpc"
 draft: false
 images: []
+description: "MSRPC Cheatsheet"
+lead: "MSRPC Cheatsheet"
 menu:
   docs:
     parent: "Ports"

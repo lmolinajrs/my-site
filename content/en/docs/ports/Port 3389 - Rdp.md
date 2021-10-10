@@ -2,6 +2,8 @@
 title: "PORT 3389 - RDP"
 draft: false
 images: []
+description: "RDP Cheatsheet"
+lead: "RDP Cheatsheet"
 menu:
   docs:
     parent: "Ports"
