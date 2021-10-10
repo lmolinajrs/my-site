@@ -11,16 +11,22 @@
   url = "/docs/ports/"
 
 [[docs]]
-  name = "Web Pentest"
-  weight = 60
-  identifier = "Web"
-  url = "/docs/web/"
-
-[[docs]]
   name = "Privilege Escalation"
   weight = 60
   identifier = "Privesc"
   url = "/docs/privesc/"
+
+[[docs]]
+  name = "Web Pentest"
+  weight = 100
+  identifier = "Wapp"
+  url = "/docs/wapp/"
+
+[[docs]]
+  name = "Other"
+  weight = 100
+  identifier = "Other"
+  url = "/docs/other/"
 
 [[main]]
   name = "Docs"

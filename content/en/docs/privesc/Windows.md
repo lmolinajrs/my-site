@@ -1,6 +1,8 @@
 ---
 title: "Windows"
 draft: false
+description: "Windows privilege escalation"
+lead: "Windows privilege escalation"
 images: []
 menu:
   docs:

@@ -1,5 +1,5 @@
 ---
-title : "Web Pentest"
+title : "Wapp"
 lead: ""
 draft: false
 images: []
