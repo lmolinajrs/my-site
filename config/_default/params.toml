@@ -10,7 +10,7 @@ titleAddition = "My Cheatsheet"
 # docsVersion = "0.3"
 
 ## Open Graph
-images = ["doks.png"]
+images = ["kryot.png"]
 ogLocale = "en_US"
 #domainTLD = "doks.netlify.app"
 #titleHome = "Doks Theme"
