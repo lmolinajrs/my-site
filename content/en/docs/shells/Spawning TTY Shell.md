@@ -2,6 +2,8 @@
 title: "Spawning TTY Shell"
 draft: false
 images: []
+description: "Full interactives shells, spawning shells, etc"
+lead: "Full interactives shells, spawning shells, etc"
 menu:
   docs:
     parent: "Shells"

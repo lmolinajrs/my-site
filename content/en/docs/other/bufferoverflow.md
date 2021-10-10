@@ -1,6 +1,6 @@
 ---
 title: "Buffer Overflow"
-Description: bufferoverflow
+Description: OSCP Buffer Overflow Cheatsheet
 draft: false
 images: []
 menu:

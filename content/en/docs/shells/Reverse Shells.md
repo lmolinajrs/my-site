@@ -2,6 +2,8 @@
 title: "Reverse Shells"
 draft: false
 images: []
+description: "Some useful reverse shells for CTF"
+lead: "Some useful reverse shells for CTF"
 menu:
   docs:
     parent: "Shells"
