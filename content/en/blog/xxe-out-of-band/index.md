@@ -70,11 +70,11 @@ Y, en segundo lugar, se hace referencia a las entidades de parámetros mediante 
 ```
 ### Resumiendo
 
-\<\!<span style="color:darkolivegreen">DOCTYPE test</span> \[ \<\!<span style="color:pink">ENTITY \% xxe</span><span style="color:brown"> SYSTEM "file:///etc/passwd"</span>\> \]\>
+\<\!<span style="color:#d32e9d">DOCTYPE test</span> \[ \<\!<span style="color:#b11362">ENTITY \% xxe</span><span style="color:#df5790"> SYSTEM "file:///etc/passwd"</span>\> \]\>
 
-* Con la etiqueta <span style="color:darkolivegreen">DOCTYPE</span> especificamos el nombre del DTD.
-* Con la etiqueta <span style="color:pink">ENTITY</span> especificamos el nombre de la entidad; el carácter % nos indica que la entidad es de parámetros.
-* Para concluir, la etiqueta <span style="color:brown">SYSTEM</span> nos indica que nuestra entidad de parámetros es externa y su valor contiene el fichero /etc/passwd.
+* Con la etiqueta <span style="color:#d32e9d">DOCTYPE</span> especificamos el nombre del DTD.
+* Con la etiqueta <span style="color:#b11362">ENTITY</span> especificamos el nombre de la entidad; el carácter % nos indica que la entidad es de parámetros.
+* Para concluir, la etiqueta <span style="color:#df5790">SYSTEM</span> nos indica que nuestra entidad de parámetros es externa y su valor contiene el fichero /etc/passwd.
 ## ¿Cuáles son los tipos de ataques XXE?
 
 * **Explotación de XXE para recuperar archivos,** donde se define una entidad externa que contiene el contenido de un archivo y se devuelve en la respuesta de la aplicación.
