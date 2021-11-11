@@ -1,6 +1,5 @@
 ---
 title: "Exfiltración de datos a través de XML External Entity (XXE) Out-of-Band"
-description: "CVSS: 8.2 (AA:BB:CC:DD)"
 draft: false
 weight: 50
 contributors: ["Kryot"]

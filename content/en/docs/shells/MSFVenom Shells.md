@@ -1,6 +1,8 @@
 ---
 title: "MSFVenom Shells"
 draft: false
+description: "Some useful msfvenom shells"
+lead: "Some useful msfvenom shells"
 images: []
 menu:
   docs:

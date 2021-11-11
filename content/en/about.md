@@ -11,6 +11,6 @@ images: []
 |----------|:-------------:|
 | Me |  22yo Junior Pentester at Nautilus Shield |
 | Contact |    lmolinasec@gmail.com   | 
-| Hackthebox | <center><script src="https://www.hackthebox.eu/badge/175051"></script></center> | 
+| Hackthebox | <center><img src="http://www.hackthebox.eu/badge/image/175051" alt="Hack The Box"></center> | 
 
 
