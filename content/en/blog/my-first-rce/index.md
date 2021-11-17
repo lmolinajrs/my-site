@@ -3,7 +3,7 @@ title: "Mi Primer Ejecución de Código a través de una Subida Irrestricta de F
 draft: false
 weight: 50
 contributors: ["Kryot"]
-date: 2021-11-11T09:19:42+01:00
+date: 2021-11-14T09:19:42+01:00
 ---
 
 ### RESUMEN
