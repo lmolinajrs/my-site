@@ -56,7 +56,7 @@ Posteriormente, procedí a ejecutar otro fichero php que indica las funciones po
 
  {{< img-simple src="rce4.png">}}
 
-Como se puede observar las únicas funciones disponibles eran:
+Como se puede observar, las únicas funciones disponibles eran:
 
 ```
 pcntl_exec
@@ -71,7 +71,7 @@ symlink
 link
 ```
 
-Despúes de una serie de intentos fallidos intentando utilizar algunas de las funciones habilitadas para conseguir un rce y ya quedandome sin ideas, decidí probar con una vieja y conocida webshell que esta encodeada y probablemente funcionaría. 
+Despúes de una serie de intentos fallidos intentando utilizar algunas de las funciones habilitadas para conseguir el rce, decidí probar con una vieja y conocida webshell que esta encodeada y probablemente funcionaría. 
 
 Para sorpresa, la webshell de <a href="https://raw.githubusercontent.com/TheBinitGhimire/Web-Shells/master/PHP/smevk.php" target="_blank">Smevk</a> funcionó.
 
@@ -81,4 +81,4 @@ Para sorpresa, la webshell de <a href="https://raw.githubusercontent.com/TheBini
 
 {{< img-simple src="rce6.png">}}
 
-En conclusión, a veces la solución es más sencilla de lo que uno cree y jamás hay que subestimar el poder de las viejas webshells.
+En conclusión, a veces la solución es más sencilla de lo que uno cree y jamás hay que subestimar el poder de un viejo :sunglasses:
