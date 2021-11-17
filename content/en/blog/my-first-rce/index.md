@@ -73,7 +73,7 @@ link
 
 Despúes de una serie de intentos fallidos intentando utilizar algunas de las funciones habilitadas para conseguir el rce, decidí probar con una vieja y conocida webshell que esta encodeada y probablemente funcionaría. 
 
-Para sorpresa, la webshell de <a href="https://raw.githubusercontent.com/TheBinitGhimire/Web-Shells/master/PHP/smevk.php" target="_blank">Smevk</a> funcionó.
+Para mi sorpresa, la webshell de <a href="https://raw.githubusercontent.com/TheBinitGhimire/Web-Shells/master/PHP/smevk.php" target="_blank">Smevk</a> funcionó.
 
  {{< img-simple src="rce5.png">}}
 
