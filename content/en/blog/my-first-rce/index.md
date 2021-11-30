@@ -31,7 +31,6 @@ Finalmente, con el fin de automatizar el proceso de explotación de dicha vulner
 
 ### RCE
 
-
 Una vez obtenidas las credenciales a partir de la inyección SQL fue posible iniciar sesión en la aplicación con los distintos usuarios, entre los cuales se destaca el usuario "comercial", que era capaz de crear formularios PQRS y adjuntar archivos en el mismo. 
 
 Se procedió a crear un formulario, rellenarlo con datos aleatorios y adjuntar una shell en php.

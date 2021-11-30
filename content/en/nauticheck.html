@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="nauticheckstyle.css">
+<title>Nautilus Web Checklist</title>
+<script src=""></script>
+<body style="background-color: rgb(107, 107, 107);">
+
+<div class="box">
+<div class="centered">
+<h1 style="color:#d32e9d; font-size: 3rem">Web Pentesting Checklist</h1>
+</div>
+<div class="ezquerda">
+<h1 style="color:#d32e9d">User Management</h1>
+<h2 style="color:#d32e9d">Registration</h2>
+</div>
+<div class="ezquerda">
+<p style="color:#FFFFFF"><input type="checkbox"> Duplicate registration (try with uppercase, +1@..., dots in name, etc)</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> Overwrite existing user (existing user takeover)</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> Username uniqueness</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> Weak password policy (user=password, password=123456,111111,abcabc,qwerty12)</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> Weak registration implementation or allows disposable email addresses</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> Fuzz after user creation to check if any folder have been overwritten or created with your profile name</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> Add only spaces in password</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> Long password (>200) leads to DoS</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> Corrupt authentication and session defects: Sign up, don't verify, request change password, change, check if account is active.</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> Try to re-register repeating same request with same password and different password too</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> If JSON request, add comma {“email”:“victim@mail.com”,”hacker@mail.com”,“token”:”xxxxxxxxxx”}</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> Lack of confirmation -> try to register with company email.</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> Check OAuth with social media registration</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> Check state parameter on social media registration</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> Try to capture integration url leading integration takeover</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> Check redirections in register page after login</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> XSS on name or email</label></p>
+</div>
+</br>
+
+<h2 style="color:#d32e9d">Authentication</h2>
+<p style="color:#FFFFFF"><input type="checkbox"> Yo</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> Yo</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> Yo</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> Yo</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> Yo</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> Yo</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> Yo</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> Yo</label></p>
+<p style="color:#FFFFFF"><input type="checkbox"> Yo</label></p>
+</div>
+</body>
+</html>

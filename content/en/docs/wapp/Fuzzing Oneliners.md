@@ -35,3 +35,7 @@ cat result.txt | jq -r '.results[] | [.url,.redirectlocation,.status,.length] | 
 ```
 echo 'https://www.test.com/' | waybackurls | parallel -j 4 -q curl -sk -o /dev/null --proxy http://127.0.0.1:8080/
 ```
+### GoSpider output to burpsuite sitemap
+```
+gospider -s https://site.com -d 16 -a -w -r -a -c 50 | grep -oP '(http|https)://[^/"].*' | cut -d "]" -f1 | parallel -j 10 -q curl -sk -o /dev/null --proxy http://127.0.0.1:8080
+```

@@ -1,0 +1,21 @@
+div.centered
+{
+    text-align: center;
+    margin-top: 2%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+div.ezquerda
+{
+    text-align: left;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+div.box
+{
+    background-color: rgb(31, 30, 30);
+    padding-top: 1px;
+    margin-left: 25%;
+    margin-right: 25%;
+    border-radius: 2%;
+}
