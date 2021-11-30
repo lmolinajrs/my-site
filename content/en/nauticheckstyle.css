@@ -1,7 +1,6 @@
 div.centered
 {
     text-align: center;
-    margin-top: 2%;
     margin-left: 15%;
     margin-right: 15%;
 }
@@ -13,9 +12,14 @@ div.ezquerda
 }
 div.box
 {
-    background-color: rgb(31, 30, 30);
-    padding-top: 1px;
+    background-color:#242424;
+    padding-top: 2px;
     margin-left: 25%;
+    padding-bottom: 2px;
     margin-right: 25%;
     border-radius: 2%;
+    font-family: sans-serif;
 }
+
+
+
