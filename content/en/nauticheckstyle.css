@@ -4,20 +4,14 @@ div.centered
     margin-left: 15%;
     margin-right: 15%;
 }
-div.ezquerda
-{
-    text-align: left;
-    margin-left: 10%;
-    margin-right: 10%;
-}
 div.box
 {
-    background-color:#242424;
+    background-color:#21252d;
     padding-top: 2px;
     margin-left: 25%;
     padding-bottom: 2px;
     margin-right: 25%;
-    border-radius: 2%;
+    border-radius: 3%;
     font-family: sans-serif;
 }
 
