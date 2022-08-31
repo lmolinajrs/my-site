@@ -91,25 +91,25 @@ Not quite sure? Use the Doks child theme.
 
 #### Doks child theme
 
-```bash
+```
 git clone https://github.com/h-enk/doks-child-theme.git my-doks-site && cd my-doks-site
 ```
 
 #### Doks starter theme
 
-```bash
+```
 git clone https://github.com/h-enk/doks.git my-doks-site && cd my-doks-site
 ```
 
 ### 2. Install dependencies
 
-```bash
+```
 npm install
 ```
 
 ### 3. Start development server
 
-```bash
+```
 npm run start
 ```
 

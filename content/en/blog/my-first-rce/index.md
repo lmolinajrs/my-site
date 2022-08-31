@@ -15,11 +15,11 @@ date: 2021-11-14T09:19:42+01:00
  Inicialmente, para la explotación de esta vulnerabilidad, se procede a solicitar la descarga de certificados tributarios.
 
  {{< img-simple src="sqli1.png">}}
- 
 
  Se intercepta la solicitud de descarga para evaluar la entrada de los parámetros presentes en la misma, donde se identifica que es posible provocar un error en la sintaxis SQL al agregar una comilla simple en el valor del parámetro cédula.
 
  {{< img-simple src="sqli2.png">}}
+
 
 Como se puede observar en la evidencia a continuación el parámetro no es sanitizado correctamente, lo que desencadena en un error en la sintaxis SQL.
 

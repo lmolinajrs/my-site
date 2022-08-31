@@ -1,27 +1,91 @@
-{{ $image := .Page.Resources.GetMatch (printf "*%s*" (.Get "src")) -}}
-{{ $lqip := $image.Resize $.Site.Params.lqipWidth -}}
+<!-- layouts/shortcodes/img.html -->
+{{- $image := .Page.Resources.GetMatch (printf "*%s*" (.Get "src")) -}}
+{{- $is_vector := eq (path.Ext $image) ".svg" -}}
+
+{{/*
+<!--
+if (isset $image "Width")  produces an non fatal error in the new version of
+hugo. Basically every image excep vector images should have an sice. So the 
+workaround is checking, if the image is not an vector image.
+Same for the other two: $image.Height and $image.Resize
+-->
+*/}}
+
+{{- $width := false -}}
+{{- if (not $is_vector) -}}
+  {{- $width = $image.Width -}}
+{{- end -}}
+{{- with (.Get "width") -}}
+  {{- $width = . -}}
+{{- end -}}
+
+{{- $height := false -}}
+{{- if (not $is_vector) -}}
+  {{- $height = .Get "height" | default $image.Height -}}
+{{- end -}}
+{{- with (.Get "height") -}}
+  {{- $height = . -}}
+{{- end -}}
+
+{{- $lqip := false -}}
+{{- if (not $is_vector) -}}
+  {{- $lqip = $image.Resize $.Site.Params.lqipWidth -}}
+{{- end -}}
 
 {{ $imgSrc := "" -}}
 {{ $imgSrcSet := slice -}}
 
-{{ $widths := $.Site.Params.landscapePhotoWidths -}}
-{{ if gt $image.Height $image.Width -}}
-  {{ $widths = $.Site.Params.portraitPhotoWidths -}}
-{{ end -}}
-
-{{ range $widths -}}
-  {{ $srcUrl := (printf "%dx" . | $image.Resize).Permalink -}}
-  {{ if eq $imgSrc "" -}}{{ $imgSrc = $srcUrl -}}{{ end -}}
-  {{ $imgSrcSet = $imgSrcSet | append (printf "%s %dw" $srcUrl .) -}}
-{{ end -}}
-{{ $imgSrcSet = (delimit $imgSrcSet ",") -}}
-
-<figure{{ with .Get "class" }} class="{{.}}"{{ end }}>
-  {{ if eq .Site.Params.options.lazySizes true -}}
-    <img class="img-fluid lazyload blur-up" data-sizes="auto" src="{{ $lqip.RelPermalink }}" data-srcset="{{ $imgSrcSet }}" width="{{ $image.Width }}" height="{{ $image.Height }}" {{ with .Get "alt" }}alt="{{.}}"{{ end }}>
-  {{ else -}}
-    <img class="img-fluid" sizes="100vw" srcset="{{ $imgSrcSet }}" src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" {{ with .Get "alt" }}alt="{{.}}"{{ end }}>
+{{- if (not $is_vector) -}}
+  {{ $widths := $.Site.Params.landscapePhotoWidths -}}
+  {{ if gt $image.Height $image.Width -}}
+    {{ $widths = $.Site.Params.portraitPhotoWidths -}}
   {{ end -}}
-  <noscript><img class="img-fluid" sizes="100vw" srcset="{{ $imgSrcSet }}" src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" {{ with .Get "alt" }}alt="{{.}}"{{ end }}></noscript>
-  {{ with .Get "caption" }}<figcaption class="figure-caption">{{ . | safeHTML }}</figcaption>{{ end }}
+
+  {{ range $widths -}}
+    {{ $srcUrl := (printf "%dx" . | $image.Resize).Permalink -}}
+    {{ if eq $imgSrc "" -}}{{ $imgSrc = $srcUrl -}}{{ end -}}
+    {{ $imgSrcSet = $imgSrcSet | append (printf "%s %dw" $srcUrl .) -}}
+  {{ end -}}
+  {{ $imgSrcSet = (delimit $imgSrcSet ",") -}}
+{{ end -}}
+
+<figure {{ with .Get "figure_class" -}}class="{{- . -}}"{{- end -}}>
+  {{- if and (eq .Site.Params.options.lazySizes true) (not $is_vector) -}}
+  <img 
+    class="img-fluid lazyload blur-up rounded mx-auto d-block {{ with .Get "img_class" -}}{{- . -}}{{- end -}}" 
+    id="zoom-default" 
+    data-sizes="auto" 
+    {{ with $lqip -}}src="{{- .RelPermalink -}}"{{- end }}
+    data-srcset="{{ $imgSrcSet }}"
+    {{ with $width -}}width="{{- . -}}"{{- end }}
+    {{ with $height -}}height="{{- . -}}"{{- end }} 
+    {{ with .Get "alt" }}alt="{{.}}"{{ end }}
+  >
+  </img>
+  {{- else -}}
+    <img 
+      class="img-fluid zoom-default rounded mx-auto d-block {{ with .Get "img_class" -}}{{- . -}}{{- end -}}" 
+      id="zoom-default" 
+      sizes="100vw" 
+      {{ with $imgSrcSet -}}srcset="{{- . -}}"{{- end }}
+      src="{{ $image.RelPermalink }}" 
+      {{ with $width -}}width="{{- . -}}"{{- end }}
+      {{ with $height -}}height="{{- . -}}"{{- end }} 
+      {{ with .Get "alt" -}}alt="{{- . -}}"{{- end }}
+  >
+  </img>
+  {{ end -}}
+  <noscript>
+    <img 
+      class="img-fluid rounded mx-auto d-block {{ with .Get "img_class" -}}{{- . -}}{{- end -}}"
+      sizes="100vw" 
+      srcset="{{ $imgSrcSet }}" 
+      src="{{ $image.RelPermalink }}" 
+      {{ with $width -}}width="{{- . -}}"{{- end }}
+      {{ with $height -}}height="{{- . -}}"{{- end }} 
+      {{ with .Get "alt" -}}alt="{{- . -}}"{{- end }}
+    >
+    </img>
+</noscript>
+{{- with .Get "caption" -}}<figcaption class="figure-caption">{{- . | safeHTML -}}</figcaption>{{- end -}}
 </figure>

