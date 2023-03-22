@@ -11,7 +11,7 @@ weight: 100
 toc: true
 ---
 
-### <span style="color:#d32e9d">Common Linux privilege escalation techniques
+### <span style="color:#b31d36">Common Linux privilege escalation techniques
 * Kernel exploits
 * Programs running as root
 * Installed software
@@ -24,24 +24,24 @@ toc: true
 * Cronjobs
 * Unmounted filesystems
 
-## <span style="color:#d32e9d">Privilege Escalation Techniques
-### <span style="color:#d32e9d">Kernel Exploits
+## <span style="color:#b31d36">Privilege Escalation Techniques
+### <span style="color:#b31d36">Kernel Exploits
 ```bash
 uname -a
 cat /proc/version
 cat /etc/issue
 ```
-#### <span style="color:#d32e9d">Search for exploits
+#### <span style="color:#b31d36">Search for exploits
 ```bash
 site:exploit-db.com kernel version
 searchsploit kernel version
 python linprivchecker.py 
 ```
-### <span style="color:#d32e9d">Programs running as root
+### <span style="color:#b31d36">Programs running as root
 ```
 ps aux | grep -i root
 ```
-### <span style="color:#d32e9d">User Installed Software
+### <span style="color:#b31d36">User Installed Software
 ```
 # Common locations for user installed software
 /usr/local/
@@ -52,7 +52,7 @@ ps aux | grep -i root
 /var/
 /usr/src/
 ```
-### <span style="color:#d32e9d">Weak/reused/plaintext passwords
+### <span style="color:#b31d36">Weak/reused/plaintext passwords
 Check file where webserver connect to database (config.php or similar)
 Check databases for admin passwords that might be reused
 Check weak passwords
@@ -60,12 +60,12 @@ Check weak passwords
 grep -ir 'password'
 ./LinEnum.sh -t -k password
 ```
-### <span style="color:#d32e9d">Service only available from inside
+### <span style="color:#b31d36">Service only available from inside
 ```
 netstat -anlp
 netstat -ano
 ```
-### <span style="color:#d32e9d">Suid and Guid Misconfiguration
+### <span style="color:#b31d36">Suid and Guid Misconfiguration
 ```bash
 #Find SUID
 find / -perm -u=s -type f 2>/dev/null
@@ -74,7 +74,7 @@ find / -perm -u=s -type f 2>/dev/null
 find / -perm -g=s -type f 2>/dev/null
 ```
 If you found something interesting then you can take a look at GTFOBins
-### <span style="color:#d32e9d">World writable scripts invoked as root
+### <span style="color:#b31d36">World writable scripts invoked as root
 If you find a script that is owned by root but is writable by anyone you can add your own malicious code in that script that will escalate your privileges when the script is run as root.
 ```
 #World writable files directories
@@ -88,7 +88,7 @@ find / -perm -o x -type d 2>/dev/null
  World writable and executable folders
 find / \( -perm -o w -perm -o x \) -type d 2>/dev/null
 ```
-### <span style="color:#d32e9d">Cronjob
+### <span style="color:#b31d36">Cronjob
 ```
 crontab -l
 ls -alh /var/spool/cron

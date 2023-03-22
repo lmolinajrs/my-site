@@ -11,7 +11,7 @@ weight: 1
 toc: true
 ---
 
-### Full Interactive
+### <span style="color:#b31d36">Full Interactive
 
 ```
 script /dev/null -c bash
@@ -27,44 +27,44 @@ stty -a
 stty rows XX columns XX
 ```
 
-#### Python
-```
+### <span style="color:#b31d36">Python
+```python
 python -c 'import pty; pty.spawn("/bin/bash")'
 ```
-### Echo
-```
+### <span style="color:#b31d36">Echo
+```python
 echo 'os.system('/bin/bash')'
 ```
-### Sh
-```
+### <span style="color:#b31d36">Sh
+```bash
 /bin/sh -i
 ```
-### Bash
-```
+### <span style="color:#b31d36">Bash
+```bash
 /bin/bash -i
 ```
-#### Perl
-```
+### <span style="color:#b31d36">Perl
+```perl
 perl -e 'exec "/bin/bash";'
 ```
-### Ruby
-```
+### <span style="color:#b31d36">Ruby
+```ruby
 exec "/bin/bash"
 ```
-### Lua
-```
+### <span style="color:#b31d36">Lua
+```lua
 os.execute('/bin/bash')
 ```
-### From Within IRB
-```
+### <span style="color:#b31d36">From Within IRB
+```shell
 exec "/bin/bash"
 ```
-### From Within Vi
+### <span style="color:#b31d36">From Within Vi
 ```
 :!bash
 :set shell=/bin/bash:shell
 ```
-### From Within Nmap
+### <span style="color:#b31d36">From Within Nmap
 ```
 !sh
 ```
