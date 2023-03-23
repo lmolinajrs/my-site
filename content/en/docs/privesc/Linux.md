@@ -2,7 +2,7 @@
 title: "Linux"
 draft: false
 images: []
-description: "Linux Privilege Escalation"
+description: "Linux privilege escalation techniques"
 lead: "Linux Privilege Escalation"
 menu:
   docs:

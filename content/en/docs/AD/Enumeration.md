@@ -1,6 +1,6 @@
 ---
 title: "Initial Enumeration"
-Description: 
+Description: External recon, enumeration principles, initial domain enumeration
 draft: false
 images: []
 menu:

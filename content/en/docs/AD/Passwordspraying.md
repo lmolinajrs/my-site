@@ -1,6 +1,6 @@
 ---
 title: "Password Spraying"
-Description: 
+Description: Default password policy, enumerating the password policy, domain passoword spraying
 draft: false
 images: []
 menu:

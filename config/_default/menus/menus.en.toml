@@ -1,36 +1,42 @@
-[[docs]]
-  name = "Shells"
-  weight = 60
-  identifier = "Shells"
-  url = "/docs/shells/"
+#[[docs]]
+#  name = "Shells"
+#  weight = 60
+#  identifier = "Shells"
+#  url = "/docs/shells/"
 
-[[docs]]
-  name = "Ports"
-  weight = 60
-  identifier = "Ports"
-  url = "/docs/ports/"
+#[[docs]]
+#  name = "Ports"
+#  weight = 60
+#  identifier = "Ports"
+#  url = "/docs/ports/"
 
 [[docs]]
   name = "Privilege Escalation"
-  weight = 60
+  weight = 500
   identifier = "Privesc"
   url = "/docs/privesc/"
 
-[[docs]]
-  name = "Web Pentest"
-  weight = 100
-  identifier = "Wapp"
-  url = "/docs/wapp/"
+#[[docs]]
+# name = "Web Pentest"
+#  weight = 100
+#  identifier = "Wapp"
+#  url = "/docs/wapp/"
 
-[[docs]]
-  name = "Other"
-  weight = 200
-  identifier = "Other"
-  url = "/docs/other/"
+#[[docs]]
+#  name = "Other"
+#  weight = 200
+#  identifier = "Other"
+#  url = "/docs/other/"
+
+#[[docs]]
+#  name = "Active Directory"
+#  weight = 10
+#  identifier = "Active Directory"
+#  url = "/docs/AD/"
 
 [[main]]
   name = "Docs"
-  url = "/docs/shells/spawning-tty-shell/"
+  url = "/docs/ad/enumeration/"
 # url = "/docs/shells/spawning-tty-shell/"
   weight = 10
 

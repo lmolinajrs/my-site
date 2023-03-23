@@ -1,6 +1,6 @@
 ---
 title: "Sniffing a Foothold"
-Description: 
+Description: LLMNR/NBT-NS poisoning, responder, inveigh, cracking NTLMv2 
 draft: false
 images: []
 menu:

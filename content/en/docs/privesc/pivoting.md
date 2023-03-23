@@ -2,8 +2,8 @@
 title: "Pivoting"
 draft: false
 images: []
-description: "Pivoting cheatsheetwith chisel, socat and metasploit"
-lead: "Pivoting cheatsheetwith chisel, socat and metasploit"
+description: "Pivoting cheatsheet with chisel, socat and metasploit"
+lead: "Pivoting cheatsheet with chisel, socat and metasploit"
 menu:
   docs:
     parent: "Privesc"
