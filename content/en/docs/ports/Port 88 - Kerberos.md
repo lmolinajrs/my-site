@@ -11,7 +11,7 @@ weight: 88
 toc: true
 ---
 
-## <span style="color:#b31d36"> Kerberos Brute-Force </span>
+## <span style="color:#208355"> Kerberos Brute-Force </span>
 
 
 In first place, due to Kerberos is an authentication protocol, it is possible to perform brute-force attacks against it. Moreover, brute-forcing Kerberos has many advantages over brute-forcing other authentication methods, like the following:
@@ -63,7 +63,7 @@ PS C:\Users\user01> .\Rubeus.exe brute /users:users.txt /passwords:passwords.txt
 ```
 In the same way as in the Linux scenario, the discovered credentials are saved in the output file alongside valid TGTs.
 
-## <span style="color:#b31d36">ASREPRoast</span>
+## <span style="color:#208355">ASREPRoast</span>
 
 The ASREPRoast attack looks for users without Kerberos pre-authentication required. That means that anyone can send an AS_REQ request to the KDC on behalf of any of those users, and receive an AS_REP message. This last kind of message contains a chunk of data encrypted with the original user key, derived from its password. Then, by using this message, the user password could be cracked offline. More detail in <a href="https://www.tarlogic.com/blog/how-kerberos-works/" target="_blank>">Kerberos theory</a>.
 
@@ -173,7 +173,7 @@ Session completed
 ```
 In this case, luck is on our side, and the user password was contained in the dictionary.
 
-## <span style="color:#b31d36">Kerberoasting</span>
+## <span style="color:#208355">Kerberoasting</span>
 
 The goal of Kerberoasting is to harvest TGS tickets for services that run on behalf of user accounts in the AD, not computer accounts. Thus, part of these TGS tickets is encrypted with keys derived from user passwords. As a consequence, their credentials could be cracked offline. More detail in <a href="https://www.tarlogic.com/blog/how-kerberos-works/" target="_blank">Kerberos theory</a>.
 
@@ -276,7 +276,7 @@ John was not able to show the username alongside the cracked password, instead, 
 
 After all, as shown above, it was possible to crack the password by using the correct dictionary with both tools.
 
-## <span style="color:#b31d36">Overpass The Hash/Pass The Key (PTK)</span>
+## <span style="color:#208355">Overpass The Hash/Pass The Key (PTK)</span>
 
 This attack aims to use user NTLM hash to request Kerberos tickets, as an alternative to the common Pass The Hash over NTLM protocol. Therefore, this could be especially useful in networks where NTLM protocol is disabled and only Kerberos is allowed as authentication protocol.
 
@@ -350,7 +350,7 @@ Rubeus ptt /ticket:
 ```
 can be used to inject that ticket.
 
-## <span style="color:#b31d36">Pass The Ticket (PTT)</span>
+## <span style="color:#208355">Pass The Ticket (PTT)</span>
 
 This kind of attack is similar to Pass the Key, but instead of using hashes to request for a ticket, the ticket itself is stolen and used to authenticate as its owner. The way of recolecting these tickets changes from Linux to Windows machines, therefore each process will be introduced in its own section.
 
@@ -633,7 +633,7 @@ C:\Windows\system32>
 ```
 After injecting the ticket of a user account, it is possible to act on behalf of that user in remote machines, but not in the local one, where Kerberos doesn’t apply. Remember that TGT tickets are more useful than TGS ones, as they are not restricted to one service only.
 
-## <span style="color:#b31d36">Silver Ticket</span>
+## <span style="color:#208355">Silver Ticket</span>
 
 The Silver ticket attack is based on crafting a valid TGS for a service once the NTLM hash of a user account is owned. Thus, it is possible to gain access to that service by forging a custom TGS with the maximum privileges inside it.
 
@@ -751,7 +751,7 @@ C:\Windows\system32>
 ```
 Additionally, the Mimikatz module kerberos::ptt can be used to inject the ticket instead of using Rubeus, as shown in the PTT attack section.
 
-## <span style="color:#b31d36">Golden Ticket</span>
+## <span style="color:#208355">Golden Ticket</span>
 
 The Golden ticket technique is similar to the Silver ticket one, however, in this case a TGT is crafted by using the NTLM hash of the krbtgt AD account. The advantage of forging a TGT instead of TGS is being able to access any service (or machine) in the domain.
 
