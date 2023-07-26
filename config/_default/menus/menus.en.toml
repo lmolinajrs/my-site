@@ -16,6 +16,12 @@
   identifier = "Privesc"
   url = "/docs/privesc/"
 
+[[docs]]
+  name = "Mobile Pentesting"
+  weight = 600
+  identifier = "Mobile"
+  url = "/docs/mobile/"
+
 #[[docs]]
 # name = "Web Pentest"
 #  weight = 100
